@@ -1,0 +1,22 @@
+.city-name {
+  color: 000;
+  font-size: 50px;
+  font-family: "Fraunces", serif;
+}
+.weather-icon {
+  width: 200px;
+  margin: auto;
+  display: block;
+}
+.current-degree {
+  color: 000;
+  font-size: 50px;
+  font-family: "Fraunces", serif;
+}
+.container {
+  background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
+}
+.degree {
+  font-size: 16px;
+  margin-top: 6px;
+}
