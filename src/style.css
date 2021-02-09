@@ -1,6 +1,6 @@
 .city-name {
   color: 000;
-  font-size: 50px;
+  font-size: 55px;
   font-family: "Fraunces", serif;
 }
 .weather-icon {
@@ -13,10 +13,24 @@
   font-size: 50px;
   font-family: "Fraunces", serif;
 }
+.degree-container {
+  margin-top: 20px;
+}
 .container {
   background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
 }
 .degree {
-  font-size: 16px;
-  margin-top: 6px;
+  position: relative;
+  font-size: 18px;
+  top: -20px;
+  padding-left: 3px;
+  text-decoration: solid;
+}
+.active {
+  color: black;
+  text-decoration: solid;
+}
+.active:hover {
+  color: black;
+  text-decoration: solid;
 }

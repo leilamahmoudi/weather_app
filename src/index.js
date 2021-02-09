@@ -1,4 +1,5 @@
 let apiKey = "5818bec111a0fe8b9841f56c8bff44c7";
+let celsiusTemp = null;
 
 function formatDate(date) {
   let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -40,8 +41,8 @@ function searchCityEnter(event) {
 function displayWeather(response) {
   console.log(response);
   let currentDegree = document.querySelector("#current-degree");
-  let temperature = Math.round(response.data.main.temp);
-  currentDegree.innerHTML = `${temperature} C°`;
+  celsiusTemp = Math.round(response.data.main.temp);
+  currentDegree.innerHTML = `${celsiusTemp} `;
 
   let descriptionDiv = document.querySelector("#description");
   let description = response.data.weather[0].description;
@@ -86,6 +87,23 @@ function getCurrentWeather(lat, long) {
   axios.get(apiUrl).then(displayWeather);
 }
 
+function clickFahrenheit(event) {
+  event.preventDefault();
+  let currentDegree = document.querySelector("#current-degree");
+  let fahrenheitTemp = (celsiusTemp * 9) / 5 + 32;
+  currentDegree.innerHTML = `${Math.round(fahrenheitTemp)} `;
+  fahrenheit.classList.add("active");
+  celsius.classList.remove("active");
+}
+
+function clickCelsius(event) {
+  event.preventDefault();
+  let currentDegree = document.querySelector("#current-degree");
+  currentDegree.innerHTML = `${celsiusTemp} `;
+  fahrenheit.classList.remove("active");
+  celsius.classList.add("active");
+}
+
 let dateEl = document.getElementById("current-time");
 dateEl.innerHTML = formatDate(new Date());
 
@@ -97,5 +115,11 @@ nameCity.addEventListener("keydown", searchCityEnter);
 
 let searchButton = document.getElementById("search-button");
 searchButton.addEventListener("click", searchCity);
+
+let fahrenheit = document.querySelector("#fahrenheit");
+fahrenheit.addEventListener("click", clickFahrenheit);
+
+let celsius = document.querySelector("#celsius");
+celsius.addEventListener("click", clickCelsius);
 
 searchMyLocation();

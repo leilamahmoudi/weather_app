@@ -47,7 +47,7 @@
             type="button"
             id="use-my-loction"
           >
-            My loction📍🔎
+            My loction📍
           </button>
 
         </div>
@@ -56,11 +56,16 @@
         <div class="row mt-3">
           <div class="col-sm-6">
             <span id="current-time"></span>
-          </br>
+            </br>
             <span id="description"></span>
-
-            <br />
-            <span class="current-degree" id="current-degree"></span>
+            <div class="degree-container">
+              <span class="current-degree" id="current-degree"></span>
+              <span class="degree" >
+                <a href="#"class="active" id="celsius" >°C</a>
+                |
+                <a href="#" id="fahrenheit" >F</a>
+              </span>
+            </div>
           </div>
           <div class="col-sm-6">
             <ul>
@@ -74,7 +79,7 @@
         </div>
         <img
           class="weather-icon"
-          src="../images/WeatherIconsMonoline_Rain.gif"
+          src="./images/WeatherIconsMonoline_Rain.gif"
           alt="weather"
         />
       </div>
