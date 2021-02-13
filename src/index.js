@@ -71,6 +71,13 @@ function displayWeather(response) {
   let cityNameDiv = document.querySelector("#city-name");
   let cityName = response.data.name;
   cityNameDiv.innerHTML = cityName;
+
+  let weatherIconDiv = document.querySelector("#weather-icon");
+  let weatherIcon = response.data.weather[0].icon;
+  weatherIconDiv.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${weatherIcon}@2x.png`
+  );
 }
 
 function searchMyLocation() {
