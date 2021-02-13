@@ -74,10 +74,12 @@ function displayWeather(response) {
 
   let weatherIconDiv = document.querySelector("#weather-icon");
   let weatherIcon = response.data.weather[0].icon;
+  let weatherDescription = response.data.weather[0].description;
   weatherIconDiv.setAttribute(
     "src",
     `http://openweathermap.org/img/wn/${weatherIcon}@2x.png`
   );
+  weatherIconDiv.setAttribute("alt", weatherDescription);
 }
 
 function searchMyLocation() {
