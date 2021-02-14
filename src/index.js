@@ -30,6 +30,9 @@ function searchCity() {
   let searchInput = document.querySelector("#search-city");
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${searchInput.value}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayWeather);
+
+  let apiUrlForecast = `https://api.openweathermap.org/data/2.5/forecast?q=${searchInput.value}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrlForecast).then(displayForecast);
 }
 
 function searchCityEnter(event) {
@@ -38,8 +41,28 @@ function searchCityEnter(event) {
   }
 }
 
+function displayForecast(response) {
+  let forecastElement = document.querySelector("#weather-forcast-container");
+
+  let forecast = response.data.list[0];
+  forecastElement.innerHTML = `
+    <div class="col-2">
+      <strong>${forecast.dt}</strong>
+      <img
+        class="weather-icon-first"
+        src="http://openweathermap.org/img/wn/${
+          forecast.weather[0].icon
+        }@2x.png"
+        alt=""
+      />
+      <div class="weather-forcast"><strong>${Math.round(
+        forecast.main.temp
+      )}</strong></div>
+    </div>
+  `;
+}
+
 function displayWeather(response) {
-  console.log(response);
   let currentDegree = document.querySelector("#current-degree");
   celsiusTemp = Math.round(response.data.main.temp);
   currentDegree.innerHTML = `${celsiusTemp} `;
