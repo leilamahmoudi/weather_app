@@ -1,5 +1,6 @@
 let apiKey = "5818bec111a0fe8b9841f56c8bff44c7";
 let celsiusTemp = null;
+let forecast = null;
 
 function formatDate(date) {
   let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -43,23 +44,25 @@ function searchCityEnter(event) {
 
 function displayForecast(response) {
   let forecastElement = document.querySelector("#weather-forcast-container");
-
-  let forecast = response.data.list[0];
-  forecastElement.innerHTML = `
-    <div class="col-2">
-      <strong>${forecast.dt}</strong>
-      <img
-        class="weather-icon-first"
-        src="http://openweathermap.org/img/wn/${
-          forecast.weather[0].icon
-        }@2x.png"
-        alt=""
-      />
-      <div class="weather-forcast"><strong>${Math.round(
-        forecast.main.temp
-      )}</strong></div>
-    </div>
-  `;
+  forecastElement.innerHTML = null;
+  for (let index = 0; index < 6; index++) {
+    forecast = response.data.list[index];
+    forecastElement.innerHTML += `
+      <div class="col-2">
+        <strong>${forecast.dt}</strong>
+        <img
+          class="weather-icon-first"
+          src="http://openweathermap.org/img/wn/${
+            forecast.weather[0].icon
+          }@2x.png"
+          alt=""
+        />
+        <div class="weather-forcast"><strong>${Math.round(
+          forecast.main.temp
+        )}</strong></div>
+      </div>
+    `;
+  }
 }
 
 function displayWeather(response) {
