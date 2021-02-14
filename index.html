@@ -26,7 +26,6 @@
   </head>
   <body>
     <div class="container mx-auto" style="width: 800px">
-
       <div class="row border p-5 main-section">
         <div class="input-group mb-3">
           <input
@@ -42,28 +41,23 @@
           >
             Search⌛️
           </button>
-          <button
-            class="btn btn-primary"
-            type="button"
-            id="use-my-loction"
-          >
+          <button class="btn btn-primary" type="button" id="use-my-loction">
             My loction📍
           </button>
-
         </div>
         <div class="city-name" id="city-name"></div>
         <span class="border"> </span>
         <div class="row mt-3">
           <div class="col-sm-6">
             <span id="current-time"></span>
-            </br>
+            <br />
             <span id="description"></span>
             <div class="degree-container">
               <span class="current-degree" id="current-degree"></span>
-              <span class="degree" >
-                <a href="#"class="active" id="celsius" >°C</a>
+              <span class="degree">
+                <a href="#" class="active" id="celsius">°C</a>
                 |
-                <a href="#" id="fahrenheit" >F</a>
+                <a href="#" id="fahrenheit">F</a>
               </span>
             </div>
           </div>
@@ -72,24 +66,24 @@
               <li><strong>Sunset:</strong> <span id="sunset"></span></li>
               <li><strong>Sunrise:</strong> <span id="sunrise"></span></li>
               <li><strong>Humidity:</strong> <span id="humidity"></span></li>
-              <li><strong>Feels like:</strong> <span id="feels-like"></span></li>
+              <li>
+                <strong>Feels like:</strong> <span id="feels-like"></span>
+              </li>
               <li><strong>Wind:</strong> sw <span id="wind"></span> m/s</li>
             </ul>
           </div>
         </div>
-        <img
-          class="weather-icon"
-          id="weather-icon"
-          src=""
-          alt="weather"
-        />
+        <img class="weather-icon" id="weather-icon" src="" alt="weather" />
       </div>
-      
+
       <div class="row weather-forcast-container">
         <div class="col-2">
           <strong>Monday</strong>
-          <img class="weather-icon-first" src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png" alt="">
-          </img>
+          <img
+            class="weather-icon-first"
+            src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
+            alt=""
+          />
           <div class="weather-forcast"><strong>3</strong>-5</div>
         </div>
       </div>
@@ -190,12 +184,13 @@
           </tbody>
         </table>
       </div>
-  
-  <a href="https://github.com/leilamahmoudi/test_project" id="coded-by-me">
-    Open-source code</a> by leila
+
+      <a href="https://github.com/leilamahmoudi/test_project" id="coded-by-me">
+        Open-source code</a
+      >
+      by leila
     </div>
 
     <script src="./src/index.js"></script>
-    
   </body>
 </html>
