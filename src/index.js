@@ -2,17 +2,36 @@ let apiKey = "5818bec111a0fe8b9841f56c8bff44c7";
 let celsiusTemp = null;
 let forecast = null;
 let weatherIcons = {
-  "clear sky": "Sunny.gif",
-  "few clouds": "PartlyCloudy.gif",
-  "scattered clouds": "Cloudy.gif",
-  "broken clouds": "MostlyCloudy.gif",
-  "shower rain": "ShowersDrizzle.gif",
-  rain: "Rain.gif",
-  thunderstorm: "Thunderstorms.gif",
-  snow: "Snow.gif",
-  mist: "FogFrostHaze.gif",
-  "light rain": "Rain.gif",
+  Clear: "Sunny.gif",
+  Clouds: "Cloudy.gif",
+  Drizzle: "ShowersDrizzle.gif",
+  Rain: "Rain.gif",
+  Thunderstorm: "Thunderstorms.gif",
+  Snow: "Snow.gif",
+  Mist: "FogFrostHaze.gif",
+  Smoke: "FogFrostHaze.gif",
+  Haze: "FogFrostHaze.gif",
+  Dust: "FogFrostHaze.gif",
+  Fog: "FogFrostHaze.gif",
+  Sand: "FogFrostHaze.gif",
+  Ash: "FogFrostHaze.gif",
+  Squall: "FogFrostHaze.gif",
+  Tornado: "FogFrostHaze.gif",
 };
+
+function formatHours(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let hours = date.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+  let minutes = date.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+
+  return `${hours}:${minutes}`;
+}
 
 function formatDate(date) {
   let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -45,9 +64,9 @@ function searchCity() {
   axios.get(apiUrl).then(displayWeather);
 
   let apiUrlForecast = `https://api.openweathermap.org/data/2.5/forecast?q=${searchInput.value}&appid=${apiKey}&units=metric`;
-  searchInput.setAttribute("value", "");
-
   axios.get(apiUrlForecast).then(displayForecast);
+
+  searchInput.value = "";
 }
 
 function searchCityEnter(event) {
@@ -69,7 +88,7 @@ function displayForecast(response) {
   for (let index = 0; index < 6; index++) {
     forecast = response.data.list[index];
     timeRow.innerHTML += `
-      <td>${forecast.dt}</td>
+      <td>${formatHours(forecast.dt)}</td>
     `;
     degreeRow.innerHTML += `
       <td>${Math.round(forecast.main.temp)}</td>
@@ -97,11 +116,11 @@ function displayWeather(response) {
 
   let sunsetDiv = document.querySelector("#sunset");
   let sunset = response.data.sys.sunset;
-  sunsetDiv.innerHTML = sunset;
+  sunsetDiv.innerHTML = formatHours(sunset);
 
   let sunriseDiv = document.querySelector("#sunrise");
   let sunrise = response.data.sys.sunrise;
-  sunriseDiv.innerHTML = sunrise;
+  sunriseDiv.innerHTML = formatHours(sunrise);
 
   let humidityDiv = document.querySelector("#humidity");
   let humidity = response.data.main.humidity;
@@ -109,7 +128,7 @@ function displayWeather(response) {
 
   let feelsLikeDiv = document.querySelector("#feels-like");
   let feelsLike = response.data.main.feels_like;
-  feelsLikeDiv.innerHTML = feelsLike;
+  feelsLikeDiv.innerHTML = Math.round(feelsLike);
 
   let windDiv = document.querySelector("#wind");
   let wind = response.data.wind.speed;
@@ -123,7 +142,7 @@ function displayWeather(response) {
   let weatherDescription = response.data.weather[0].description;
   weatherIconDiv.setAttribute(
     "src",
-    `./images/${weatherIcons[response.data.weather[0].description]}`
+    `./images/${weatherIcons[response.data.weather[0].main]}`
   );
   weatherIconDiv.setAttribute("alt", weatherDescription);
 }
