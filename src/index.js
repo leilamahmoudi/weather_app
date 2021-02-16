@@ -1,6 +1,18 @@
 let apiKey = "5818bec111a0fe8b9841f56c8bff44c7";
 let celsiusTemp = null;
 let forecast = null;
+let weatherIcons = {
+  "clear sky": "Sunny.gif",
+  "few clouds": "PartlyCloudy.gif",
+  "scattered clouds": "Cloudy.gif",
+  "broken clouds": "MostlyCloudy.gif",
+  "shower rain": "ShowersDrizzle.gif",
+  rain: "Rain.gif",
+  thunderstorm: "Thunderstorms.gif",
+  snow: "Snow.gif",
+  mist: "FogFrostHaze.gif",
+  "light rain": "Rain.gif",
+};
 
 function formatDate(date) {
   let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -99,11 +111,10 @@ function displayWeather(response) {
   cityNameDiv.innerHTML = cityName;
 
   let weatherIconDiv = document.querySelector("#weather-icon");
-  let weatherIcon = response.data.weather[0].icon;
   let weatherDescription = response.data.weather[0].description;
   weatherIconDiv.setAttribute(
     "src",
-    `http://openweathermap.org/img/wn/${weatherIcon}@2x.png`
+    `./images/${weatherIcons[response.data.weather[0].description]}`
   );
   weatherIconDiv.setAttribute("alt", weatherDescription);
 }
