@@ -33,6 +33,7 @@
             class="form-control"
             id="search-city"
             placeholder="Search City"
+            value="Stockholm"
           />
           <button
             class="btn btn-outline-secondary"
@@ -92,88 +93,12 @@
               <th scope="col"></th>
               <th scope="col"></th>
               <th scope="col"></th>
-              <th scope="col"></th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">Time</th>
-              <td>Now</td>
-              <td>21:30</td>
-              <td>22:30</td>
-              <td>23:30</td>
-              <td>00:30</td>
-              <td>01:30</td>
-              <td>02:30</td>
-            </tr>
-            <tr>
-              <th scope="row">Degree</th>
-              <td>-3</td>
-              <td>-4</td>
-              <td>-1</td>
-              <td>-3</td>
-              <td>-4</td>
-              <td>-2</td>
-              <td>-1</td>
-            </tr>
-            <tr>
-              <th scope="row">Condition</th>
-              <td><i class="fas fa-bolt"></i></td>
-              <td><i class="fas fa-cloud"></i></td>
-              <td><i class="fas fa-cloud-meatball"></i></td>
-              <td><i class="fas fa-cloud-showers-heavy"></i></td>
-              <td><i class="fas fa-cloud-sun"></i></td>
-              <td><i class="fas fa-cloud"></i></td>
-              <td><i class="fas fa-cloud"></i></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="row p-4">
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col"></th>
-              <th scope="col">Sunday</th>
-              <th scope="col">Monday</th>
-              <th scope="col">Tuesday</th>
-              <th scope="col">Wednesday</th>
-              <th scope="col">Thursday</th>
-              <th scope="col">Friday</th>
-              <th scope="col">Saturday</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">Highest</th>
-              <td>-3</td>
-              <td>-4</td>
-              <td>-1</td>
-              <td>-3</td>
-              <td>-4</td>
-              <td>-2</td>
-              <td>-1</td>
-            </tr>
-            <tr>
-              <th scope="row">Condition</th>
-              <td><i class="fas fa-cloud"></i></td>
-              <td><i class="fas fa-cloud-sun"></i></td>
-              <td><i class="fas fa-cloud"></i></td>
-              <td><i class="fas fa-cloud-meatball"></i></td>
-              <td><i class="fas fa-cloud-showers-heavy"></i></td>
-              <td><i class="fas fa-cloud"></i></td>
-              <td><i class="fas fa-bolt"></i></td>
-            </tr>
-            <tr>
-              <th scope="row">Lowest</th>
-              <td>-8</td>
-              <td>-4</td>
-              <td>-9</td>
-              <td>-3</td>
-              <td>-5</td>
-              <td>-2</td>
-              <td>-2</td>
-            </tr>
+            <tr id="forecast-time-row"></tr>
+            <tr id="forecast-degree-row"></tr>
+            <tr id="forecast-condition-row"></tr>
           </tbody>
         </table>
       </div>

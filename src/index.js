@@ -45,6 +45,8 @@ function searchCity() {
   axios.get(apiUrl).then(displayWeather);
 
   let apiUrlForecast = `https://api.openweathermap.org/data/2.5/forecast?q=${searchInput.value}&appid=${apiKey}&units=metric`;
+  searchInput.setAttribute("value", "");
+
   axios.get(apiUrlForecast).then(displayForecast);
 }
 
@@ -55,24 +57,31 @@ function searchCityEnter(event) {
 }
 
 function displayForecast(response) {
-  let forecastElement = document.querySelector("#weather-forcast-container");
-  forecastElement.innerHTML = null;
+  let timeRow = document.querySelector("#forecast-time-row");
+  timeRow.innerHTML = `<th scope="row">Time</th>`;
+
+  let degreeRow = document.querySelector("#forecast-degree-row");
+  degreeRow.innerHTML = `<th scope="row">Degree</th>`;
+
+  let conditionRow = document.querySelector("#forecast-condition-row");
+  conditionRow.innerHTML = `<th scope="row">Condition</th>`;
+
   for (let index = 0; index < 6; index++) {
     forecast = response.data.list[index];
-    forecastElement.innerHTML += `
-      <div class="col-2">
-        <strong>${forecast.dt}</strong>
+    timeRow.innerHTML += `
+      <td>${forecast.dt}</td>
+    `;
+    degreeRow.innerHTML += `
+      <td>${Math.round(forecast.main.temp)}</td>
+    `;
+    conditionRow.innerHTML += `
+      <td>
         <img
           class="weather-icon-first"
-          src="http://openweathermap.org/img/wn/${
-            forecast.weather[0].icon
-          }@2x.png"
+          src="http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png"
           alt=""
         />
-        <div class="weather-forcast"><strong>${Math.round(
-          forecast.main.temp
-        )}</strong></div>
-      </div>
+      </td>
     `;
   }
 }
@@ -168,4 +177,4 @@ fahrenheit.addEventListener("click", clickFahrenheit);
 let celsius = document.querySelector("#celsius");
 celsius.addEventListener("click", clickCelsius);
 
-searchMyLocation();
+searchCity();
