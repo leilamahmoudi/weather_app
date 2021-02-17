@@ -16,8 +16,8 @@
 .degree-container {
   margin-top: 20px;
 }
-.container {
-  background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
+.main-container {
+  background-image: linear-gradient(to top, #fae2d8 0%, #ace0f9 100%);
 }
 .degree {
   position: relative;
@@ -48,4 +48,14 @@
 }
 .table-section {
   padding: 0 30px 20px 30px;
+  text-align: center;
+}
+.forecast-condition-row {
+  text-align: center;
+}
+.forecast-labels {
+  text-align: left;
+}
+.container-second {
+  padding: 5px 0;
 }

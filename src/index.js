@@ -77,13 +77,13 @@ function searchCityEnter(event) {
 
 function displayForecast(response) {
   let timeRow = document.querySelector("#forecast-time-row");
-  timeRow.innerHTML = `<th scope="row">Time</th>`;
+  timeRow.innerHTML = `<th scope="row" class="forecast-labels">Time</th>`;
 
   let degreeRow = document.querySelector("#forecast-degree-row");
-  degreeRow.innerHTML = `<th scope="row">Degree</th>`;
+  degreeRow.innerHTML = `<th scope="row" class="forecast-labels">Temp</th>`;
 
   let conditionRow = document.querySelector("#forecast-condition-row");
-  conditionRow.innerHTML = `<th scope="row">Condition</th>`;
+  conditionRow.innerHTML = `<th scope="row" class="forecast-labels">Condition</th>`;
 
   for (let index = 0; index < 6; index++) {
     forecast = response.data.list[index];
