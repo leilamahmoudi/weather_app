@@ -94,7 +94,7 @@ function displayForecast(response) {
       <td>${Math.round(forecast.main.temp)}</td>
     `;
     conditionRow.innerHTML += `
-      <td>
+      <td class="p-0">
         <img
           class="weather-icon-first"
           src="http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png"
